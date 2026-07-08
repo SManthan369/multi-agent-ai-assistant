@@ -1,32 +1,29 @@
-from langchain_ollama import ChatOllama
-
-from config.settings import MODEL_NAME, TEMPERATURE
+from agents.base_agent import BaseAgent
 
 
-llm = ChatOllama(
-    model=MODEL_NAME,
-    temperature=TEMPERATURE
-)
+class ResearchAgent(BaseAgent):
 
+    def build_prompt(self, state):
 
-def researcher(state):
+        return f"""
+You are an expert research assistant.
 
-    prompt = f"""
-You are a Research Agent in a multi-agent AI system.
+Research the following topic.
 
-You have received the following execution plan:
+Topic:
+{state["query"]}
 
-{state["plan"]}
-
-Provide concise research notes for each step.
-
-Do not write a report.
-
-Return only research notes.
+Provide:
+- Overview
+- Important facts
+- Challenges
+- Latest trends
 """
 
-    response = llm.invoke(prompt)
+    def process_response(self, state, response):
 
-    state["research"] = response.content
+        state["research"] = response
 
-    return state
+        state["messages"].append("Research completed")
+
+        return state

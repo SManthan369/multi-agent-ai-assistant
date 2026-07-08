@@ -1,24 +1,24 @@
-from config.llm import llm
+from agents.base_agent import BaseAgent
 
 
-def planning_agent(state):
-    prompt = f"""
-You are an expert planning agent in a multi-agent AI system.
+class PlanningAgent(BaseAgent):
 
-Your responsibility is to create a clear, step-by-step execution plan based on the research provided.
+    def build_prompt(self, state):
 
-Research:
+        return f"""
+You are an expert planning agent.
+
+Based on this research:
+
 {state["research"]}
 
-Rules:
-- Return only the execution plan.
-- Use numbered steps.
-- Keep each step concise and actionable.
-- Do not repeat the research.
+Create a numbered execution plan.
 """
 
-    response = llm.invoke(prompt)
+    def process_response(self, state, response):
 
-    state["plan"] = response.content
+        state["plan"] = response
 
-    return state
+        state["messages"].append("Planning completed")
+
+        return state
