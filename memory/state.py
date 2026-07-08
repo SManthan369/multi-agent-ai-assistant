@@ -1,4 +1,4 @@
-from typing import TypedDict
+from typing import TypedDict, List
 
 
 class AgentState(TypedDict):
@@ -7,3 +7,7 @@ class AgentState(TypedDict):
     research: str
 
     plan: str
+
+    report: str
+
+    messages: List[str]
