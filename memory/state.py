@@ -11,3 +11,5 @@ class AgentState(TypedDict):
     report: str
 
     messages: List[str]
+
+    approval: bool

@@ -5,7 +5,8 @@ state = {
     "research": "",
     "plan": "",
     "report": "",
-    "messages": []
+    "messages": [],
+    "approval": False
 }
 
 result = graph.invoke(state)
@@ -20,10 +21,14 @@ print("PLAN")
 print("=" * 80)
 print(result["plan"])
 
-print("\n" + "=" * 80)
-print("FINAL REPORT")
-print("=" * 80)
-print(result["report"])
+# Only print the report if it was generated
+if result.get("approval"):
+    print("\n" + "=" * 80)
+    print("FINAL REPORT")
+    print("=" * 80)
+    print(result["report"])
+else:
+    print("\nReport generation was cancelled by the user.")
 
 print("\n" + "=" * 80)
 print("WORKFLOW LOG")
