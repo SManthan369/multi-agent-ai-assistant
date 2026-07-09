@@ -1,34 +1,34 @@
-from abc import ABC, abstractmethod
+from agents.base_agent import BaseAgent
+from memory.state import AgentState
 
-from config.llm import llm
 
+class ResearchAgent(BaseAgent):
 
-class BaseAgent(ABC):
-    """
-    Base class for all AI agents.
-    """
+    def build_prompt(self, state: AgentState) -> str:
+        return f"""
+You are a senior AI research assistant.
 
-    def __init__(self):
-        self.llm = llm
+Research the following topic:
 
-    @abstractmethod
-    def build_prompt(self, state):
-        """Return the prompt for the LLM."""
-        pass
+{state["query"]}
 
-    def run(self, state):
-        """
-        Execute the agent.
-        """
+Provide:
+1. Overview
+2. Key concepts
+3. Current trends
+4. Challenges
+5. References (if known)
 
-        prompt = self.build_prompt(state)
+Return the response in well-structured markdown.
+"""
 
-        response = self.llm.invoke(prompt)
+    def process_response(
+        self,
+        state: AgentState,
+        response: str
+    ) -> AgentState:
 
-        return self.process_response(state, response.content)
+        state["research"] = response
+        state["messages"].append("Research completed")
 
-    def process_response(self, state, response):
-        """
-        Override this if an agent needs custom response handling.
-        """
-        return response
+        return state

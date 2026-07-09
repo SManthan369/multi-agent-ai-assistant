@@ -3,6 +3,7 @@ from langgraph.graph import StateGraph, END
 from memory.state import AgentState
 from agents.researcher import research_agent
 from agents.planner import planning_agent
+from agents.writer import writer_agent
 
 
 builder = StateGraph(AgentState)
