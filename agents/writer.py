@@ -1,9 +1,11 @@
-from config.llm import llm
+from agents.base_agent import BaseAgent
 
 
-def writer_agent(state):
+class WriterAgent(BaseAgent):
 
-    prompt = f"""
+    def build_prompt(self, state):
+
+        return f"""
 You are a professional technical writer.
 
 Using the research:
@@ -14,12 +16,21 @@ Using the execution plan:
 
 {state["plan"]}
 
-Write a clean report with headings.
+Write a professional report with the following sections:
 
+# Introduction
+
+# Main Discussion
+
+# Action Plan
+
+# Conclusion
 """
 
-    response = llm.invoke(prompt)
+    def process_response(self, state, response):
 
-    state["report"] = response.content
+        state["report"] = response
 
-    return state
+        state["messages"].append("Report generated")
+
+        return state
