@@ -1,11 +1,28 @@
 from agents.base_agent import BaseAgent
 from tools.web_search import web_search
 from tools.tool_router import should_use_web_search
+from memory.memory_manager import MemoryManager
 
 
 class ResearchAgent(BaseAgent):
 
     def build_prompt(self, state):
+
+        memory = MemoryManager()
+        previous_memory = memory.load()
+
+        # Last 3 memories
+        memory_text = ""
+
+        for item in previous_memory[-3:]:
+            memory_text += f"""
+Previous Query:
+{item['query']}
+
+Previous Research:
+{item['research']}
+
+"""
 
         # Decide whether web search is required
         if should_use_web_search(state["query"]):
@@ -33,6 +50,10 @@ URL: {item['url']}
         return f"""
 You are an expert research assistant.
 
+Previous Memory:
+
+{memory_text}
+
 Research the following topic:
 
 {state["query"]}
@@ -40,6 +61,10 @@ Research the following topic:
 Supporting Information:
 
 {search_text}
+
+Instructions:
+- Use previous memory only if it is relevant.
+- Otherwise ignore it.
 
 Provide:
 
@@ -56,6 +81,14 @@ Write the answer in clean markdown.
 
         state["research"] = response
 
+        # Save current research into memory
+        memory = MemoryManager()
+        memory.save(
+            state["query"],
+            response
+        )
+
+        state["messages"].append("Memory Updated")
         state["messages"].append("Research completed")
 
         return state
