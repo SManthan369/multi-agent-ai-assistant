@@ -1,40 +1,21 @@
-# LangGraph and LangChain
 langgraph
 langchain
 langchain-community
 langchain-core
-
-# Local/Open-source LLM support
 langchain-ollama
 
-# API backend
 fastapi
 uvicorn
 
-# Environment variables
+streamlit
+
 python-dotenv
 
-# Data validation
 pydantic
 
-# Web search tool
-tavily-python
-
-# Memory / caching
-redis
-
-# Vector database
-chromadb
-
-# Embeddings
-sentence-transformers
-
-# HTTP requests
 requests
 
-# File handling
-pypdf
+tavily-python
 
-# Development tools
-pytest
-black
+pypdf
+duckduckgo-search

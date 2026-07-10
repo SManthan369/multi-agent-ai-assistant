@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+.git/
+.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+
+sample_data/
+
+memory/chat_memory.json
+
+.env
