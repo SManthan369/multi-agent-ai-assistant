@@ -2,8 +2,9 @@ import json
 import os
 
 
-MEMORY_FILE = "memory/chat_memory.json"
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MEMORY_FILE = os.path.join(BASE_DIR, "memory", "chat_memory.json")
 
 class MemoryManager:
 
