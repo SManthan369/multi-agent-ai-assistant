@@ -6,38 +6,48 @@ class DataAnalysisAgent(BaseAgent):
 
     def analyze_dataset(self, file_path):
 
-        df = read_csv(file_path)
+     df = read_csv(file_path)
 
-        summary = {
-            "rows": len(df),
-            "columns": len(df.columns),
-            "column_names": list(df.columns),
-            "missing_values": df.isnull().sum().to_dict(),
-            "statistics": df.describe(include="all").to_string()
+     summary = {
+        "rows": len(df),
+        "columns": len(df.columns),
+        "column_names": list(df.columns),
+        "data_types": df.dtypes.astype(str).to_dict(),
+        "missing_values": df.isnull().sum().to_dict(),
+        "statistics": df.describe(include="all").to_string(),
+        "sample_data": df.head(5).to_string()
         }
 
-        return summary
+     return summary
 
     def build_prompt(self, state):
 
         summary = self.analyze_dataset(state["dataset"])
 
         return f"""
-You are a professional Data Analyst.
+You are a experienced Data Analyst.
+
+Analyze this dataset carefully.
 
 Dataset Summary:
 
 {summary}
 
-Generate:
+enerate a professional report with these sections:
 
-1. Dataset Overview
-2. Important Statistics
-3. Missing Values
-4. Interesting Patterns
-5. Business Insights
+# Dataset Overview
 
-Use markdown.
+# Data Quality
+
+# Statistical Summary
+
+# Important Trends
+
+# Business Insights
+
+# Recommendations
+
+Keep the report professional.
 """
 
     def process_response(self, state, response):
