@@ -7,3 +7,5 @@ class AgentState(TypedDict):
     draft: str
     review: str
     final: str
+    dataset:str
+    analysis:str
