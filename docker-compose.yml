@@ -1,14 +1,11 @@
 version: "3.9"
 
 services:
-
-  ai-assistant:
-
+  multi-agent-ai:
     build: .
-
-    container_name: multi-agent-ai-assistant
-
     ports:
       - "8501:8501"
-
-    restart: unless-stopped
+    environment:
+      MODEL_NAME: gemma2:2b
+      OLLAMA_HOST: http://host.docker.internal:11434
+      TEMPERATURE: 0.2

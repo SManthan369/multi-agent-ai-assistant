@@ -19,3 +19,5 @@ tavily-python
 
 pypdf
 duckduckgo-search
+pytest
+pytest-cov
