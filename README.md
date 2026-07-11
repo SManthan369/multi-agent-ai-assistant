@@ -1,127 +1,150 @@
-# 🤖 Multi-Agent AI Assistant
+# 🤖 AgentFlow AI
 
-A production-ready **Multi-Agent AI Assistant** built with **LangGraph, Ollama, Streamlit, and Python**. The system uses multiple specialized AI agents to perform research, planning, report generation, and CSV data analysis through an interactive web interface.
+<p align="center">
+  <strong>A Production-Ready Multi-Agent AI Assistant built with LangGraph, Ollama, Streamlit, and Python.</strong>
+</p>
+
+<p align="center">
+
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![LangGraph](https://img.shields.io/badge/LangGraph-Multi--Agent-purple)
+![Streamlit](https://img.shields.io/badge/Streamlit-UI-red?logo=streamlit)
+![Docker](https://img.shields.io/badge/Docker-Container-blue?logo=docker)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+</p>
 
 ---
 
-## 🚀 Features
+## 📖 Overview
+
+AgentFlow AI is a modular **Multi-Agent AI Assistant** designed using **LangGraph** and powered by **Ollama**.
+
+The application coordinates multiple AI agents to perform:
+
+- 🔍 Intelligent Research
+- 📝 Planning
+- 📄 Technical Report Generation
+- 📊 CSV Data Analysis
+- 🧠 Persistent Memory
+- 🔀 Intelligent Tool Routing
+
+The project follows a scalable agent-based architecture and includes Docker support, Streamlit UI, and local LLM execution.
+
+---
+
+# 🚀 Features
 
 - 🔍 Research Agent with intelligent web search
-- 📝 Planning Agent for structured execution plans
-- 📄 Writer Agent for professional report generation
-- 📊 Data Analysis Agent for CSV file analysis
-- 🧠 Persistent memory for previous interactions
-- 🔀 Tool Router for deciding when to use web search
-- 🤖 Local LLM support using Ollama
-- 🎨 Interactive Streamlit dashboard
-- 📥 Download generated reports
-- 📈 Workflow logs and execution statistics
-- 🐳 Docker support
-- ⚙️ Environment-based configuration
+- 📝 Planning Agent
+- 📄 Writer Agent
+- 📊 CSV Analysis Agent
+- 🧠 Persistent JSON Memory
+- 🔀 Smart Tool Router
+- 🤖 Local LLM using Ollama
+- 🎨 Streamlit Dashboard
+- 📥 Download Reports
+- 📈 Workflow Logs
+- 🐳 Docker Support
+- ⚙️ Environment Variables
+- 🧪 Unit Testing (Coming Soon)
+- 🔄 GitHub Actions CI/CD (Coming Soon)
 
 ---
 
-## 🏗️ Architecture
+# 🏗️ System Architecture
+
+<p align="center">
+<img src="assets/architecture.png" width="950">
+</p>
+
+---
+
+# ⚙️ Workflow
 
 ```text
-                User
-                  │
-        Streamlit Web Interface
-                  │
-           LangGraph Workflow
-                  │
-    ┌────────┬────────┬────────┬────────┐
-    │        │        │        │
-Research  Planning  Writer  Data Analysis
-    │                 │
-DuckDuckGo         Ollama LLM
-    │
- Memory Manager
-    │
- Final Report
+User
+   │
+   ▼
+Streamlit UI
+   │
+   ▼
+LangGraph Workflow
+   │
+   ├── Research Agent
+   │       │
+   │       ├── Tool Router
+   │       │       ├── DuckDuckGo Search
+   │       │       └── Local Knowledge
+   │
+   ├── Planning Agent
+   │
+   ├── Writer Agent
+   │
+   ├── Data Analysis Agent
+   │
+   └── Memory Manager
+            │
+            ▼
+      Final Report
 ```
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```text
 multi-agent-ai-assistant/
 │
 ├── agents/
-│   ├── base_agent.py
-│   ├── researcher.py
-│   ├── planner.py
-│   ├── writer.py
-│   └── data_analysis.py
-│
 ├── config/
-│   ├── llm.py
-│   ├── logger.py
-│   └── settings.py
-│
 ├── graphs/
-│   └── workflow.py
-│
 ├── memory/
-│   ├── manager.py
-│   ├── state.py
-│   └── chat_memory.json
-│
 ├── tools/
-│   ├── web_search.py
-│   ├── tool_router.py
-│   └── csv_tool.py
-│
 ├── ui/
-│   └── app.py
-│
 ├── sample_data/
-├── logs/
 ├── assets/
 ├── tests/
-│
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
-├── .env.example
 ├── README.md
 └── LICENSE
 ```
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-| Category | Technology |
-|----------|------------|
-| Language | Python |
-| AI Framework | LangGraph |
-| LLM | Ollama (Gemma 2B / Llama 3.1) |
-| UI | Streamlit |
-| Data Analysis | Pandas |
-| Search | DuckDuckGo |
-| Containerization | Docker |
-| Version Control | Git & GitHub |
+| Technology | Usage |
+|------------|------|
+| Python | Programming Language |
+| LangGraph | Multi-Agent Workflow |
+| LangChain | LLM Framework |
+| Ollama | Local LLM |
+| Streamlit | User Interface |
+| Pandas | CSV Analysis |
+| DuckDuckGo | Web Search |
+| Docker | Containerization |
+| GitHub | Version Control |
 
 ---
 
-## ⚙️ Installation
+# ⚡ Installation
 
-### Clone the repository
+### Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/multi-agent-ai-assistant.git
-cd multi-agent-ai-assistant
+git clone https://github.com/<YOUR_USERNAME>/AgentFlow-AI.git
+
+cd AgentFlow-AI
 ```
 
-### Create a virtual environment
+### Create Virtual Environment
 
 ```bash
 python -m venv venv
 ```
-
-### Activate the environment
 
 Windows
 
@@ -129,13 +152,13 @@ Windows
 venv\Scripts\activate
 ```
 
-Linux/macOS
+Linux / macOS
 
 ```bash
 source venv/bin/activate
 ```
 
-### Install dependencies
+### Install Requirements
 
 ```bash
 pip install -r requirements.txt
@@ -143,13 +166,13 @@ pip install -r requirements.txt
 
 ---
 
-## 🤖 Install Ollama
+# 🤖 Install Ollama
 
-Download Ollama from:
+Download:
 
 https://ollama.com
 
-Pull the required model:
+Pull model:
 
 ```bash
 ollama pull gemma2:2b
@@ -157,13 +180,13 @@ ollama pull gemma2:2b
 
 ---
 
-## ▶️ Run the Project
+# ▶️ Run Application
 
 ```bash
 streamlit run ui/app.py
 ```
 
-Open:
+Open
 
 ```
 http://localhost:8501
@@ -171,62 +194,112 @@ http://localhost:8501
 
 ---
 
-## 🐳 Docker
+# 🐳 Docker
 
-Build
+Build Image
 
 ```bash
-docker build -t multi-agent-ai-assistant .
+docker build -t agentflow-ai .
 ```
 
-Run
+Run Container
 
 ```bash
 docker run -p 8501:8501 \
 -e OLLAMA_HOST=http://host.docker.internal:11434 \
-multi-agent-ai-assistant
+agentflow-ai
 ```
 
 ---
 
-## 📸 Screenshots
+# 📸 Screenshots
 
-Coming Soon
+## Home
 
-- Home Screen
-- Research Agent
-- Planning Agent
-- CSV Analysis
-- Final Report
+<img src="assets/home.png">
 
 ---
 
-## 🎯 Future Improvements
+## Research
 
-- Support for multiple LLM providers
-- Voice input
-- PDF report generation
+<img src="assets/research.png">
+
+---
+
+## Planning
+
+<img src="assets/planning.png">
+
+---
+
+## Data Analysis
+
+<img src="assets/analysis.png">
+
+---
+
+## Final Report
+
+<img src="assets/report.png">
+
+---
+
+# 🧪 Testing
+
+```bash
+pytest
+```
+
+Coverage
+
+```bash
+pytest --cov
+```
+
+---
+
+# 🔄 CI/CD
+
+GitHub Actions automatically:
+
+- Install dependencies
+- Run unit tests
+- Check formatting
+- Build Docker image
+
+---
+
+# 🎯 Future Improvements
+
+- RAG Support
+- ChromaDB Memory
+- Vector Search
+- PDF Export
 - Authentication
-- Cloud deployment
-- GitHub Actions CI/CD
+- Cloud Deployment
+- Multi-LLM Support
+- Voice Interface
 
 ---
 
-## 🤝 Contributing
+# 🤝 Contributing
 
-Contributions are welcome.
+Contributions are welcome!
 
-Fork the repository and submit a pull request.
+1. Fork the repository
+2. Create a new branch
+3. Commit your changes
+4. Open a Pull Request
 
 ---
 
-## 📜 License
+# 📜 License
 
 This project is licensed under the MIT License.
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Manthan Soni**
 
