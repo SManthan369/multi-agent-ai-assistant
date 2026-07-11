@@ -3,10 +3,7 @@ from pydantic import BaseModel
 
 from graphs.workflow import graph
 
-app = FastAPI(
-    title="Multi-Agent AI Assistant",
-    version="1.0.0"
-)
+app = FastAPI(title="Multi-Agent AI Assistant", version="1.0.0")
 
 
 class ResearchRequest(BaseModel):
@@ -16,10 +13,7 @@ class ResearchRequest(BaseModel):
 @app.get("/")
 def home():
 
-    return {
-        "message": "Multi-Agent AI Assistant API",
-        "status": "running"
-    }
+    return {"message": "Multi-Agent AI Assistant API", "status": "running"}
 
 
 @app.post("/research")
@@ -33,7 +27,7 @@ def research(request: ResearchRequest):
         "report": "",
         "analysis": "",
         "messages": [],
-        "approval": True
+        "approval": True,
     }
 
     result = graph.invoke(state)
@@ -41,5 +35,5 @@ def research(request: ResearchRequest):
     return {
         "research": result["research"],
         "plan": result["plan"],
-        "report": result["report"]
+        "report": result["report"],
     }

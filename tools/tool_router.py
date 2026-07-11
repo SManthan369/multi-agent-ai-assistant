@@ -10,12 +10,10 @@ LATEST_KEYWORDS = [
     "updates",
     "live",
     "released",
-
     # Years
     "2025",
     "2026",
     "2027",
-
     # Finance
     "stock",
     "stock price",
@@ -24,27 +22,23 @@ LATEST_KEYWORDS = [
     "price",
     "crypto",
     "bitcoin",
-
     # Weather
     "weather",
     "forecast",
     "temperature",
-
     # Sports
     "score",
     "match",
     "fixture",
     "result",
-
     # Politics
     "election",
     "government",
-
     # Technology
     "launch",
     "announcement",
     "version",
-    "release"
+    "release",
 ]
 
 

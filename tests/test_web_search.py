@@ -12,7 +12,7 @@ def test_web_search_returns_results(mock_ddgs):
         {
             "title": "Python",
             "href": "https://python.org",
-            "body": "Python Official Website"
+            "body": "Python Official Website",
         }
     ]
 
@@ -45,9 +45,7 @@ def test_web_search_exception(mock_ddgs):
 
     mock_instance = MagicMock()
 
-    mock_instance.__enter__.return_value.text.side_effect = Exception(
-        "Network Error"
-    )
+    mock_instance.__enter__.return_value.text.side_effect = Exception("Network Error")
 
     mock_ddgs.return_value = mock_instance
 

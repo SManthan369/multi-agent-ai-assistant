@@ -7,10 +7,7 @@ def test_analyze_dataset(mock_read_csv):
 
     import pandas as pd
 
-    df = pd.DataFrame({
-        "Name": ["A", "B"],
-        "Age": [20, 21]
-    })
+    df = pd.DataFrame({"Name": ["A", "B"], "Age": [20, 21]})
 
     mock_read_csv.return_value = df
 
@@ -34,7 +31,7 @@ def test_build_prompt(mock_summary, sample_state):
         "data_types": {},
         "missing_values": {},
         "statistics": "Statistics",
-        "sample_data": "Sample"
+        "sample_data": "Sample",
     }
 
     sample_state["dataset"] = "sample.csv"
@@ -54,10 +51,7 @@ def test_process_response(sample_state):
 
     response = "Analysis Complete"
 
-    updated = agent.process_response(
-        sample_state,
-        response
-    )
+    updated = agent.process_response(sample_state, response)
 
     assert updated["analysis"] == "Analysis Complete"
     assert "Dataset analyzed" in updated["messages"]

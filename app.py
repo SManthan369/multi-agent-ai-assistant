@@ -6,7 +6,7 @@ state = {
     "plan": "",
     "report": "",
     "messages": [],
-    "approval": False
+    "approval": False,
 }
 
 result = graph.invoke(state)

@@ -83,10 +83,7 @@ Write the answer in clean markdown.
 
         # Save current research into memory
         memory = MemoryManager()
-        memory.save(
-            state["query"],
-            response
-        )
+        memory.save(state["query"], response)
 
         state["messages"].append("Memory Updated")
         state["messages"].append("Research completed")

@@ -1,5 +1,6 @@
 from typing import TypedDict
 
+
 class AgentState(TypedDict):
     query: str
     plan: str
@@ -7,5 +8,5 @@ class AgentState(TypedDict):
     draft: str
     review: str
     final: str
-    dataset:str
-    analysis:str
+    dataset: str
+    analysis: str

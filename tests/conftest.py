@@ -33,5 +33,5 @@ def sample_state():
         "report": "",
         "analysis": "",
         "messages": [],
-        "approval": True
+        "approval": True,
     }

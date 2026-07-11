@@ -7,10 +7,7 @@ def test_memory_save_and_load(temp_memory_file):
 
     manager = MemoryManager(temp_memory_file)
 
-    manager.save(
-        "AI",
-        "Artificial Intelligence Research"
-    )
+    manager.save("AI", "Artificial Intelligence Research")
 
     memories = manager.load()
 

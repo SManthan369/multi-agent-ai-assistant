@@ -7,7 +7,6 @@ from agents.planner import PlanningAgent
 from agents.writer import WriterAgent
 from agents.human_approval import human_approval
 
-
 research_agent = ResearchAgent()
 planning_agent = PlanningAgent()
 writer_agent = WriterAgent()
@@ -37,12 +36,7 @@ def approval_router(state):
 
 
 builder.add_conditional_edges(
-    "Approval",
-    approval_router,
-    {
-        "Writer": "Writer",
-        END: END
-    }
+    "Approval", approval_router, {"Writer": "Writer", END: END}
 )
 
 

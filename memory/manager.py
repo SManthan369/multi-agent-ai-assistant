@@ -1,7 +1,6 @@
 import json
 import os
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_MEMORY_FILE = os.path.join(BASE_DIR, "memory", "chat_memory.json")
 
@@ -46,10 +45,7 @@ class MemoryManager:
         except (json.JSONDecodeError, FileNotFoundError):
             data = []
 
-        data.append({
-            "query": query,
-            "research": research
-        })
+        data.append({"query": query, "research": research})
 
         # Keep only the latest 20 memories
         data = data[-20:]

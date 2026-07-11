@@ -11,11 +11,7 @@ from graphs.workflow import graph
 # Page Configuration
 # =============================
 
-st.set_page_config(
-    page_title="Multi-Agent AI Assistant",
-    page_icon="🤖",
-    layout="wide"
-)
+st.set_page_config(page_title="Multi-Agent AI Assistant", page_icon="🤖", layout="wide")
 
 # =============================
 # Session State
@@ -40,18 +36,12 @@ st.sidebar.header("⚙️ Controls")
 query = st.sidebar.text_area(
     "Research Topic",
     height=150,
-    placeholder="Example: Explain Retrieval Augmented Generation"
+    placeholder="Example: Explain Retrieval Augmented Generation",
 )
 
-dataset = st.sidebar.file_uploader(
-    "Upload CSV (Optional)",
-    type=["csv"]
-)
+dataset = st.sidebar.file_uploader("Upload CSV (Optional)", type=["csv"])
 
-run = st.sidebar.button(
-    "🚀 Run Assistant",
-    use_container_width=True
-)
+run = st.sidebar.button("🚀 Run Assistant", use_container_width=True)
 
 # History
 st.sidebar.divider()
@@ -74,8 +64,7 @@ st.sidebar.divider()
 
 st.sidebar.markdown("### ℹ️ About")
 
-st.sidebar.info(
-    """
+st.sidebar.info("""
 **Multi-Agent AI Assistant**
 
 ✅ Research Agent
@@ -91,8 +80,7 @@ st.sidebar.info(
 ✅ Ollama LLM
 
 ✅ Streamlit UI
-"""
-)
+""")
 
 # =============================
 # Empty State
@@ -100,9 +88,7 @@ st.sidebar.info(
 
 if not run:
 
-    st.info(
-        "👈 Enter a research topic in the sidebar and click **Run Assistant**."
-    )
+    st.info("👈 Enter a research topic in the sidebar and click **Run Assistant**.")
 
 # =============================
 # Run Workflow
@@ -122,7 +108,7 @@ if run:
         "report": "",
         "analysis": "",
         "messages": [],
-        "approval": True
+        "approval": True,
     }
 
     if dataset:
@@ -151,34 +137,20 @@ if run:
         elapsed = time.time() - start
 
     # Save history
-    st.session_state.history.insert(
-        0,
-        {
-            "query": query,
-            "report": result["report"]
-        }
-    )
+    st.session_state.history.insert(0, {"query": query, "report": result["report"]})
 
     st.session_state.history = st.session_state.history[:10]
 
     st.success("✅ Workflow Completed")
 
-    st.metric(
-        "⏱ Execution Time",
-        f"{elapsed:.2f} sec"
-    )
+    st.metric("⏱ Execution Time", f"{elapsed:.2f} sec")
 
     # =============================
     # Tabs
     # =============================
 
     tab1, tab2, tab3, tab4 = st.tabs(
-        [
-            "📚 Research",
-            "🗺️ Plan",
-            "📊 Analysis",
-            "📝 Report"
-        ]
+        ["📚 Research", "🗺️ Plan", "📊 Analysis", "📝 Report"]
     )
 
     with tab1:
@@ -203,7 +175,7 @@ if run:
             data=result["report"],
             file_name="report.md",
             mime="text/markdown",
-            use_container_width=True
+            use_container_width=True,
         )
 
     # =============================
@@ -217,22 +189,13 @@ if run:
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.metric(
-            "Research Words",
-            len(result["research"].split())
-        )
+        st.metric("Research Words", len(result["research"].split()))
 
     with col2:
-        st.metric(
-            "Plan Lines",
-            len(result["plan"].splitlines())
-        )
+        st.metric("Plan Lines", len(result["plan"].splitlines()))
 
     with col3:
-        st.metric(
-            "Report Words",
-            len(result["report"].split())
-        )
+        st.metric("Report Words", len(result["report"].split()))
 
     # =============================
     # Workflow Log
@@ -251,11 +214,13 @@ if run:
 
     with st.expander("🛠 Debug Information"):
 
-        st.json({
-            "Query": state["query"],
-            "Dataset": state["dataset"] if state["dataset"] else "None",
-            "Execution Time": f"{elapsed:.2f} sec"
-        })
+        st.json(
+            {
+                "Query": state["query"],
+                "Dataset": state["dataset"] if state["dataset"] else "None",
+                "Execution Time": f"{elapsed:.2f} sec",
+            }
+        )
 
 # =============================
 # Footer
@@ -263,6 +228,4 @@ if run:
 
 st.divider()
 
-st.caption(
-    "Built with ❤️ using Python • LangGraph • Ollama • Streamlit"
-)
+st.caption("Built with ❤️ using Python • LangGraph • Ollama • Streamlit")

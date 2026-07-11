@@ -36,17 +36,12 @@ class BaseAgent(ABC):
 
             logger.info(f"{self.__class__.__name__} completed")
 
-            return self.process_response(
-                state,
-                response.content
-            )
+            return self.process_response(state, response.content)
 
         except Exception as e:
 
             logger.error(f"{self.__class__.__name__} failed: {str(e)}")
 
-            state["messages"].append(
-                f"{self.__class__.__name__} failed"
-            )
+            state["messages"].append(f"{self.__class__.__name__} failed")
 
             return state

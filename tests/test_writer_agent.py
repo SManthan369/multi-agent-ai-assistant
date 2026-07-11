@@ -43,10 +43,7 @@ Artificial Intelligence is...
 AI will continue to evolve.
 """
 
-    updated_state = agent.process_response(
-        sample_state,
-        report
-    )
+    updated_state = agent.process_response(sample_state, report)
 
     assert updated_state["report"] == report
     assert "Report generated" in updated_state["messages"]

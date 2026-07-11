@@ -10,19 +10,12 @@ def test_research_agent_with_web_search(mock_web_search, mock_router):
     mock_router.return_value = True
 
     mock_web_search.return_value = [
-        {
-            "title": "AI",
-            "body": "Artificial Intelligence",
-            "url": "https://example.com"
-        }
+        {"title": "AI", "body": "Artificial Intelligence", "url": "https://example.com"}
     ]
 
     agent = ResearchAgent()
 
-    state = {
-        "query": "Latest AI",
-        "messages": []
-    }
+    state = {"query": "Latest AI", "messages": []}
 
     prompt = agent.build_prompt(state)
 
@@ -37,10 +30,7 @@ def test_research_agent_without_web_search(mock_router):
 
     agent = ResearchAgent()
 
-    state = {
-        "query": "Explain Python",
-        "messages": []
-    }
+    state = {"query": "Explain Python", "messages": []}
 
     prompt = agent.build_prompt(state)
 
@@ -52,16 +42,9 @@ def test_process_response():
 
     agent = ResearchAgent()
 
-    state = {
-        "query": "Artificial Intelligence",
-        "research": "",
-        "messages": []
-    }
+    state = {"query": "Artificial Intelligence", "research": "", "messages": []}
 
-    updated = agent.process_response(
-        state,
-        "Research Output"
-    )
+    updated = agent.process_response(state, "Research Output")
 
     assert updated["research"] == "Research Output"
     assert "Memory Updated" in updated["messages"]

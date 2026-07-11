@@ -6,19 +6,19 @@ class DataAnalysisAgent(BaseAgent):
 
     def analyze_dataset(self, file_path):
 
-     df = read_csv(file_path)
+        df = read_csv(file_path)
 
-     summary = {
-        "rows": len(df),
-        "columns": len(df.columns),
-        "column_names": list(df.columns),
-        "data_types": df.dtypes.astype(str).to_dict(),
-        "missing_values": df.isnull().sum().to_dict(),
-        "statistics": df.describe(include="all").to_string(),
-        "sample_data": df.head(5).to_string()
+        summary = {
+            "rows": len(df),
+            "columns": len(df.columns),
+            "column_names": list(df.columns),
+            "data_types": df.dtypes.astype(str).to_dict(),
+            "missing_values": df.isnull().sum().to_dict(),
+            "statistics": df.describe(include="all").to_string(),
+            "sample_data": df.head(5).to_string(),
         }
 
-     return summary
+        return summary
 
     def build_prompt(self, state):
 
