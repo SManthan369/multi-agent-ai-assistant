@@ -1,7 +1,7 @@
 from agents.base_agent import BaseAgent
 from tools.web_search import web_search
 from tools.tool_router import should_use_web_search
-from memory.memory_manager import MemoryManager
+from memory.manager import MemoryManager
 
 
 class ResearchAgent(BaseAgent):

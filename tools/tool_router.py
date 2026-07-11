@@ -1,26 +1,58 @@
 LATEST_KEYWORDS = [
+    # Time-sensitive
     "latest",
     "today",
     "current",
-    "news",
-    "2026",
     "recent",
     "new",
+    "news",
     "update",
+    "updates",
     "live",
-    "released"
+    "released",
+
+    # Years
+    "2025",
+    "2026",
+    "2027",
+
+    # Finance
+    "stock",
+    "stock price",
+    "share price",
+    "market",
+    "price",
+    "crypto",
+    "bitcoin",
+
+    # Weather
+    "weather",
+    "forecast",
+    "temperature",
+
+    # Sports
+    "score",
+    "match",
+    "fixture",
+    "result",
+
+    # Politics
+    "election",
+    "government",
+
+    # Technology
+    "launch",
+    "announcement",
+    "version",
+    "release"
 ]
 
 
 def should_use_web_search(query: str) -> bool:
     """
-    Decide whether the query needs live web information.
+    Return True if the query requires live web information.
     """
 
-    query = query.lower()
+    query = query.lower().strip()
 
-    for keyword in LATEST_KEYWORDS:
-        if keyword in query:
-            return True
-
-    return False
+    return any(keyword in query for keyword in LATEST_KEYWORDS)

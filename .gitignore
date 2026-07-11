@@ -1,5 +1,40 @@
+# Virtual Environment
 venv/
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+
+# Environment Variables
 .env
+
+# Coverage
+.coverage
+htmlcov/
+
+# Logs
+logs/
+*.log
+
+# Streamlit uploads
+sample_data/
+
+# Runtime memory
+memory/chat_memory.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+*.egg-info/
+
+# Outputs
 outputs/

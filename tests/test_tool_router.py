@@ -1,14 +1,21 @@
 from tools.tool_router import should_use_web_search
 
-queries = [
-    "What is Machine Learning?",
-    "Latest AI news",
-    "Current GPU prices",
-    "Explain LangGraph",
-    "Today's weather"
-]
 
-for q in queries:
-    print(q)
-    print(should_use_web_search(q))
-    print("-" * 40)
+def test_latest_news_requires_web_search():
+    assert should_use_web_search("Latest AI news") is True
+
+
+def test_current_weather_requires_web_search():
+    assert should_use_web_search("Weather in Delhi today") is True
+
+
+def test_stock_price_requires_web_search():
+    assert should_use_web_search("Tesla stock price") is True
+
+
+def test_general_python_does_not_require_web_search():
+    assert should_use_web_search("Explain Python loops") is False
+
+
+def test_machine_learning_does_not_require_web_search():
+    assert should_use_web_search("What is Machine Learning?") is False
