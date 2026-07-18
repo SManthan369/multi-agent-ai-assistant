@@ -32,10 +32,14 @@ jobs:
         run: black --check .
 
       - name: Run Unit Tests
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
           pytest --ignore=tests/test_workflow.py
 
       - name: Generate Coverage Report
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
           pytest --ignore=tests/test_workflow.py --cov=. --cov-report=xml
 
