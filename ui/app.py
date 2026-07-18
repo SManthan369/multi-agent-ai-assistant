@@ -93,7 +93,16 @@ if not run:
 # =============================
 # Run Workflow
 # =============================
+workflow_start = time.perf_counter()
 
+result = graph.invoke(state)
+
+workflow_time = time.perf_counter() - workflow_start
+
+st.metric(
+    "Total Workflow Time",
+    f"{workflow_time:.2f} sec"
+)
 if run:
 
     if not query.strip():

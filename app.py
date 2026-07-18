@@ -36,3 +36,10 @@ print("=" * 80)
 
 for msg in result["messages"]:
     print(f"✓ {msg}")
+st.subheader("⚡ Performance")
+
+col1, col2, col3 = st.columns(3)
+
+col1.metric("Research", result["research_time"])
+col2.metric("Planning", result["planning_time"])
+col3.metric("Writer", result["writer_time"])
