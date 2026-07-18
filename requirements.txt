@@ -1,24 +1,18 @@
 langgraph
 langchain
-langchain-community
 langchain-core
-langchain-ollama
-
-fastapi
-uvicorn
+langchain-community
+langchain-groq
 
 streamlit
 
 python-dotenv
-
 pydantic
 
-requests
-
-tavily-python
-
-pypdf
 duckduckgo-search
+
 pytest
 pytest-cov
-black 
+black
+fastapi
+uvicorn

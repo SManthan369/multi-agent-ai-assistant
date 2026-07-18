@@ -29,8 +29,8 @@ class BaseAgent(ABC):
             prompt = self.build_prompt(state)
             prompt_time = time.perf_counter() - prompt_start
             logger.info(
-    f"{self.__class__.__name__} prompt length: {len(prompt)} characters"
-)
+                f"{self.__class__.__name__} prompt length: {len(prompt)} characters"
+            )
             # LLM call
             llm_start = time.perf_counter()
             response = self.llm.invoke(prompt)
@@ -45,9 +45,7 @@ class BaseAgent(ABC):
                 f"Total: {total_time:.2f}s"
             )
 
-            state["messages"].append(
-                f"{self.__class__.__name__}: {total_time:.2f}s"
-            )
+            state["messages"].append(f"{self.__class__.__name__}: {total_time:.2f}s")
 
             return self.process_response(state, response.content)
 
