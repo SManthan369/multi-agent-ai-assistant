@@ -103,9 +103,7 @@ st.sidebar.info("""
 # ======================================================
 
 if not run:
-    st.info(
-        "👈 Enter a research topic in the sidebar and click **Run Assistant**."
-    )
+    st.info("👈 Enter a research topic in the sidebar and click **Run Assistant**.")
     st.stop()
 
 # ======================================================
@@ -281,6 +279,4 @@ with st.expander("🛠 Debug Information"):
 
 st.divider()
 
-st.caption(
-    "Built with ❤️ using Python • LangGraph • Groq • Streamlit"
-)
+st.caption("Built with ❤️ using Python • LangGraph • Groq • Streamlit")
